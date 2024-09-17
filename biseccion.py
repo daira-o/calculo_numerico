@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 # DEFINICIÓN DE LA FUNCIÓN
 # fx es la función f(x) = e^(x^2) * x - 4
-fx = lambda x: x**2 -2 
+fx = lambda x: 2**2 -2 
 
 # INTERVALO INICIAL
 # [a, b] es el intervalo en el que buscamos la raíz
