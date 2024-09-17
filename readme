@@ -1,0 +1,20 @@
+# Método de Jacobi
+
+Este proyecto implementa el método iterativo de Jacobi para resolver sistemas de ecuaciones lineales de la forma \( Ax = b \). El método de Jacobi es un algoritmo simple y eficiente para encontrar soluciones aproximadas a sistemas lineales.
+
+## Descripción
+
+El método de Jacobi es un algoritmo iterativo utilizado para resolver sistemas de ecuaciones lineales. Cada iteración actualiza las soluciones de las incógnitas usando la fórmula derivada del despeje de cada variable. El proceso se repite hasta que el error entre soluciones sucesivas sea menor que una tolerancia establecida.
+
+## Requisitos
+
+- Python 3.x
+- NumPy
+- pandas
+
+## Instalación
+
+Para instalar las dependencias necesarias, usa pip:
+
+```bash
+pip install numpy pandas
