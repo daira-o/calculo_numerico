@@ -3,8 +3,8 @@ import sympy as sym
 import matplotlib.pyplot as plt
 
 # INGRESO: Datos de entrada
-xi = [1, 1.1, 1.3, 1.5, 1.9, 2.1]
-yi = [1.84, 1.96, 2.21, 2.45, 2.94, 3.18]
+xi = [1, 1.25, 1.5, 1.75, 2]
+yi = [5.1,5.79,6.53,7.45,8.46]
 
 # Convertir listas a arrays de numpy
 xi = np.array(xi, dtype=float)
@@ -12,21 +12,19 @@ yi = np.array(yi, dtype=float)
 n = len(xi)  # Número de datos
 
 # Calcular sumatorias y medias
-log_xi = np.log(xi)
 log_yi = np.log(yi)
-sx = np.sum(log_xi)   # Sumatoria de log(xi)
+sx = np.sum(xi)    # Sumatoria de xi
 sy = np.sum(log_yi)   # Sumatoria de log(yi)
-sxy = np.sum(log_xi * log_yi)  # Sumatoria de log(xi) * log(yi)
-sx2 = np.sum(log_xi ** 2)  # Sumatoria de log(xi)^2
+sxy = np.sum(xi * log_yi)  # Sumatoria de xi * log(yi)
+sx2 = np.sum(xi ** 2)  # Sumatoria de (xi)^2
 
 # Calcular coeficientes a y b para la regresión y = a * x^b
 b = (n * sxy - sx * sy) / (n * sx2 - sx ** 2)  # Pendiente
-a_log = (sy - b * sx) / n  # Intercepto en logaritmos
-a = np.exp(a_log)  # Convertir el intercepto a la escala original
+a = np.exp((sy - b * sx) / n ) # Intercepto en logaritmos
 
 # Definir la ecuación de regresión: y = a * x^b
 x = sym.Symbol('x')
-f = a * x**b
+f = a * np.e**(b*x)
 
 # Convertir la función simbólica a una función numérica
 fx = sym.lambdify(x, f)
@@ -43,7 +41,7 @@ r2 = r ** 2
 r2_porcentaje = np.around(r2 * 100, 2)
 
 # Calcular el error cuadrático
-error_cuad = np.sum((fi - yi) ** 2)
+error_cuad = np.sum((yi - fi) ** 2)
 mse = np.mean((yi - fi) ** 2)
 
 # SALIDA: Resultados
